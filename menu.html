@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Trà Phong Cách Nhật Bản</title>
+    <!-- Import html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* Import font chữ Serif mang cảm giác cổ điển, thanh lịch */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            --bg-color: #F6F4EB;
+            --text-color: #2C2C2C;
+            --accent-red: #B22222;
+            --border-color: #DCD7C9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Noto Serif JP', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-wrapper {
+            max-width: 850px;
+            width: 100%;
+            background: #FAFAF7;
+            padding: 4rem 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .menu-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .shop-logo {
+            width: 80px; 
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid var(--border-color); 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .menu-header p {
+            font-style: italic;
+            color: #777;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .category {
+            position: relative;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .jp-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            color: var(--accent-red);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-right: 1rem;
+            height: 40px;
+            opacity: 0.8;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .item-name {
+            font-size: 1.05rem;
+            background: #FAFAF7;
+            padding-right: 10px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* CSS MỚI THÊM: Định dạng thẻ Bestseller */
+        .bestseller-tag {
+            background-color: var(--accent-red);
+            color: #FAFAF7;
+            font-size: 0.65rem;
+            font-family: 'Noto Serif JP', sans-serif;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            box-shadow: 0 2px 4px rgba(178, 34, 34, 0.2);
+            white-space: nowrap;
+        }
+
+        .item-price {
+            font-size: 1.05rem;
+            background: #FAFAF7;
+            padding-left: 10px;
+            z-index: 2;
+            font-weight: 600;
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 6px;
+            border-bottom: 1px dotted #ccc;
+            z-index: 1;
+        }
+
+        /* Nút tải ảnh */
+        .download-btn {
+            margin-top: 2rem;
+            padding: 12px 30px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            background: transparent;
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-red);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gắn ID "capture-area" để thư viện biết cần chụp phần nào -->
+    <div class="menu-wrapper" id="capture-area">
+        <header class="menu-header">
+            <img src="logo_coffee.png" alt="Logo Quán" class="shop-logo">
+            <h1>PHƯƠNG NAM COFFEE</h1>
+            <p>Sự tĩnh lặng trong từng hương vị</p>
+        </header>
+
+        <main class="menu-grid" id="menu-container">
+            <!-- Dữ liệu sẽ được render bằng Javascript -->
+        </main>
+    </div>
+
+    <!-- Nút kích hoạt tải ảnh -->
+    <button class="download-btn" id="download-btn">Tải Ảnh Menu</button>
+
+    <script>
+        const menuData = [
+            {
+                name: "Trà Sữa",
+                jp: "ミルク",
+                items: [
+                    // THÊM: bestseller: true vào món muốn nổi bật
+                    { name: "Trà sữa matcha", price: 25},
+                    { name: "Trà sữa truyền thống", price: 25 },
+                    { name: "Trà thái", price: 20 },
+                    { name: "Trà sữa đào", price: 25 },
+                    { name: "Trà sữa việt quất", price: 25 }
+                ]
+            },
+            {
+                name: "Trà Trái Cây",
+                jp: "果物茶",
+                items: [
+                    { name: "Trà chanh", price: 10 },
+                    { name: "Trà tắc", price: 10 },
+                    { name: "Tắc xí muội", price: 15 },
+                    { name: "Trà tắc thái xanh", price: 15 },
+                    { name: "Trà việt quất", price: 20 },
+                    { name: "Trà đào cam sả", price: 30 },
+                    { name: "Olong việt quất", price: 30 },
+                    { name: "Trà chanh việt quất", price: 25 },
+                    { name: "Trà chanh đào", price: 25 }
+                ]
+            },
+            {
+                name: "Cacao & Matcha",
+                jp: "抹茶",
+                items: [
+                    { name: "Cacao latte", price: 30 },
+                    { name: "Matcha latte", price: 30 },
+                    { name: "Cacao matcha", price: 30, bestseller: true },
+                    { name: "Coco matcha", price: 30 }
+                ]
+            },
+            {
+                name: "Sữa Chua",
+                jp: "ヨーグルト",
+                items: [
+                    { name: "Sữa chua việt quất", price: 28 },
+                    { name: "Sữa chua đào", price: 28 }
+                ]
+            },
+            {
+                name: "Soda",
+                jp: "ソーダ",
+                items: [
+                    { name: "Soda việt quất", price: 20 },
+                    { name: "Soda đào", price: 20 }
+                ]
+            },
+                        {
+                name: "Topping",
+                jp: "トッピング",
+                items: [
+                    { name: "Chân châu đen", price: 5 },
+                    { name: "Nha đam", price: 5 }
+                ]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render menu
+            const container = document.getElementById('menu-container');
+            let htmlContent = '';
+
+            menuData.forEach(category => {
+                htmlContent += `
+                    <section class="category">
+                        <div class="category-header">
+                            <span class="jp-text">${category.jp}</span>
+                            <h2 class="category-title">${category.name}</h2>
+                        </div>
+                        <ul class="menu-list">
+                `;
+
+                category.items.forEach(item => {
+                    // CẬP NHẬT: Kiểm tra xem món có phải là Bestseller không để render thẻ span
+                    const badge = item.bestseller ? `<span class="bestseller-tag">Best Seller</span>` : '';
+                    
+                    htmlContent += `
+                        <li class="menu-item">
+                            <span class="item-name">${item.name} ${badge}</span>
+                            <span class="item-price">${item.price}k</span>
+                        </li>
+                    `;
+                });
+
+                htmlContent += `
+                        </ul>
+                    </section>
+                `;
+            });
+
+            container.innerHTML = htmlContent;
+
+            // Xử lý sự kiện tải ảnh
+            document.getElementById('download-btn').addEventListener('click', function() {
+                const captureArea = document.getElementById('capture-area');
+                const btn = this;
+                
+                // Đổi text để báo hiệu đang xử lý
+                const originalText = btn.innerText;
+                btn.innerText = "Đang tạo ảnh...";
+                btn.disabled = true;
+
+                // Cấu hình chụp: scale tăng độ nét, useCORS để lấy được ảnh logo nếu có
+                html2canvas(captureArea, {
+                    scale: 2, 
+                    useCORS: true,
+                    backgroundColor: "#F6F4EB" // Đảm bảo nền ảnh trùng với màu nền body
+                }).then(canvas => {
+                    // Tạo thẻ a ảo để kích hoạt tải xuống
+                    const link = document.createElement('a');
+                    link.download = 'Menu_DanhTra.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Khôi phục nút
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }).catch(err => {
+                    console.error("Lỗi khi tạo ảnh:", err);
+                    alert("Có lỗi xảy ra khi tạo ảnh!");
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
